@@ -228,7 +228,7 @@ class Character :
         """
         the character move one step front
         """
-        # TODO
+        self.move += self.direction
 
 
     def get_hit(self, damages):
