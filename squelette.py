@@ -91,7 +91,6 @@ class Game :
     def all_characters(self):
         return self.players[0].team + self.players[1].team
 
-
     def get_character_at(self, position):
         """
         PARAM : - position : tuple
@@ -99,7 +98,7 @@ class Game :
         """
         actual_position = []
         for position in self.all_characters:
-            if position == :
+            if position == [self.nb_lines, self.nb_columns]:
                 return actual_position == position
             else:
                 return None
