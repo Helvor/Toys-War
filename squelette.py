@@ -99,7 +99,7 @@ class Game :
         """
         actual_position = []
         for position in self.all_characters:
-            if position ==
+            if position == :
                 return actual_position == position
             else:
                 return None
