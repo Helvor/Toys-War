@@ -97,9 +97,12 @@ class Game :
         PARAM : - position : tuple
         RETURN : character at the position, None if there is nobody
         """
-        self.position = position
+        actual_position = []
         for position in self.all_characters:
             if position ==
+                return actual_position == position
+            else:
+                return None
 
 
 
