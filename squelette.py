@@ -99,7 +99,7 @@ class Game :
         actual_position = []
         for position in self.all_characters:
             if position == [self.nb_lines, self.nb_columns]:
-                return actual_position == position
+                return actual_position = position
             else:
                 return None
 
