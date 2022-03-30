@@ -1,6 +1,6 @@
 
 
-class Player :
+class Player:
 
     def __str__(self):
         return f"Nom : {self.name} | Nombre de vie : {self.life} | Argent : {self.money} | Team : {self.team}"
@@ -39,10 +39,10 @@ class Player :
         check if enough money
         and create the new one
         """
-        line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines-1}) ? (enter if none) ")
+        line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines-1}) ? (enter if none)")
         if line != "":
             line = int(line)
-            if 0<=line<=self.game.nb_lines-1 :
+            if 0 <= line <= self.game.nb_lines-1:
                 if self.money >= Character.base_price :
                     column = 0 if self.direction == +1 else self.game.nb_columns-1
                     Character(self,(line,column))
@@ -165,7 +165,7 @@ class Character :
 
     base_price = 1
     base_life = 5
-    base_strength = 1 
+    base_strength = 1
 
     def __init__(self, player, position):
         """
@@ -190,7 +190,7 @@ class Character :
 
     @property
     def direction(self):
-        """
+
         self.player[0] = 1
         self.player[1] = -1
         return self.player[0] and self.player[1]
@@ -199,6 +199,7 @@ class Character :
             return self.player[0].direction = 1
         elif self.player[1]:
             return self.player[1].direction = -1
+        """
 
     @property
     def game(self):
@@ -274,4 +275,4 @@ if __name__ == "__main__":
     game = Game(zozo, lolo)
     print(f"{zozo.__str__()}\n{lolo.__str__()}")
     print(game.get_character_at([3, 5]))
-   
+
