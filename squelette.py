@@ -97,11 +97,10 @@ class Game :
         PARAM : - position : tuple
         RETURN : character at the position, None if there is nobody
         """
-        self.position = self.all_characters[self.nb_lines, self.nb_columns]
-        if self.position == "":
-            return None
-        else:
-            return self.position
+        self.position = position
+        for position in self.all_characters:
+            if position ==
+
 
 
     def place_character(self, character, position):
