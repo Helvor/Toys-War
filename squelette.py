@@ -254,6 +254,7 @@ class Character :
 
 
 if __name__ == "__main__":
+
     print("Let's Play !!! ")
     # TODO
     bibi = Player("bibi", 20, 10)
