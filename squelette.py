@@ -256,4 +256,9 @@ class Character :
 if __name__ == "__main__":
     print("Let's Play !!! ")
     # TODO
+    bibi = Player("bibi", 20, 10)
+    lolo = Player("lolo", 25, 10)
+    game = Game(bibi, lolo)
+    print(f"{bibi.__str__()}\n{lolo.__str__()}")
+    print(game.get_character_at([3, 5]))
    
