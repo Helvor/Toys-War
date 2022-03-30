@@ -190,9 +190,15 @@ class Character :
 
     @property
     def direction(self):
+        """
         self.player[0] = 1
         self.player[1] = -1
         return self.player[0] and self.player[1]
+        """
+        if self.player[0]:
+            return self.player[0].direction = 1
+        elif self.player[1]:
+            return self.player[1].direction = -1
 
     @property
     def game(self):
@@ -200,9 +206,16 @@ class Character :
 
     @property
     def enemy(self):
+        """
         self.ennemy[0] = self.player[1]
         self.ennemy[1] = self.player[0]
         return self.ennemy[0] and self.ennemy[1]
+        """
+        if self.player[0]:
+            self.enemy[0] = self.player[1]
+        elif self.player[1]:
+            self.enemy[1] = self.player[0]
+
 
     @property
     def design(self):
