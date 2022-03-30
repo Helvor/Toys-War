@@ -219,9 +219,9 @@ class Character :
 
     @property
     def design(self):
-        self.design[0] = ">"
-        self.design[1] = "<"
-        return self.design[0] and self.design[1]
+        self.player[0].design = ">"
+        self.player[1].design = "<"
+        return self.player[0].design and self.player[1].design
 
 
     def move(self):
