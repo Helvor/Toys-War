@@ -87,12 +87,10 @@ class Game :
         PARAM : - position : tuple
         RETURN : character at the position, None if there is nobody
         """
-
         actual_character = None
         for character in self.all_characters:
             if character.position == position:
                 actual_character = character
-
         return actual_character
 
     def place_character(self, character, position):
@@ -102,6 +100,16 @@ class Game :
                 - position : tuple
         RETURN : bool to say if placing is done or not
         """
+        self.character = character
+        self.position = []
+        if self.nb_lines < self.position < self.nb_columns:
+            if self.get_character_at() == None:
+                self.character.position = self.position
+                return True
+            else:
+                return False
+        else:
+            return False
 
     def draw(self):
         """
@@ -185,7 +193,7 @@ class Character :
         """
         the character move one step front
         """
-        self.move += self.direction()
+        self. += self.direction()
 
     def get_hit(self, damages):
         """
