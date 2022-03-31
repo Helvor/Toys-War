@@ -10,9 +10,9 @@ class Player:
                 - money : float
         initialisate team to empty list, game and direction to None
         """
-        self.name = str(name)
-        self.life = float(life)
-        self.money = float(money)
+        self.name = name
+        self.life = life
+        self.money = money
         self.team = []
         self.game = None
         self.direction = None
@@ -53,10 +53,10 @@ class Game :
         - update player's direction and game
         - initialisate player_turn to 0
         """
-        self.nb_lines = int(nb_lines)
-        self.nb_columns = int(nb_columns)
+        self.nb_lines = nb_lines
+        self.nb_columns = nb_columns
         self.players = [player0,player1]
-        self.player_turn = int(0)
+        self.player_turn = 0
 
         self.players[0].game = self
         self.players[1].game = self
@@ -134,7 +134,6 @@ class Game :
             - oponent player's character play turn
             - draw the board
         """
-
 
     def play(self):
         """
@@ -224,7 +223,7 @@ class Character :
         elif self.direction == 1:
             if self.position[1] == self.game.nb_columns:
                 self.enemy.life -= self.strength
-            elif self.game.get_character_at(self.position[1] + self.direction, ):
+            elif self.game.get_character_at(self.position[1] + self.direction):
                 self.life -= self.strength
                 reward = self.strength / 3
                 self.player.money += reward
@@ -233,13 +232,14 @@ class Character :
         """
         play one turn : move and attack
         """
-        # TODO
+        self.move()
+        self.attack()
 
     def __str__(self):
         """
         return a string represent the current object
         """
-        # TODO
+        return f"perso ({self.price}$) || life : {self.life} || strength : [{self.strength}"
 
 
 if __name__ == "__main__":
@@ -250,4 +250,3 @@ if __name__ == "__main__":
     game = Game(zozo, lolo)
     print(f"{zozo.__str__()}\n{lolo.__str__()}")
     print(game.get_character_at([3, 5]))
-    print(game.draw())
