@@ -65,17 +65,14 @@ class Game :
 
     @property
     def current_player(self):
-        if self.players[0]:
-            return self.player_turn = 0
-        elif self.player_turn[1]
-            return self.player_turn = 1
+        self.player[int(self.player_turn)]
 
     @property
     def oponent(self):
-        if self.players[0]:
-            return self.player_turn = 1
-        elif self.player_turn[1]
-            return self.player_turn = 0
+        oponent = 0
+        if self.player_turn == 0:
+            oponent = 1
+        self.player[int(self.oponent)]
 
     @property
     def all_characters(self):
@@ -217,7 +214,20 @@ class Character :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-        # TODO
+        if self.direction == -1:
+            if self.position[0] == 0:
+                self.enemy.life -= self.get_hit(self.strength)
+            elif self.game.get_character_at(self.position[0] + self.direction):
+                self.life -= self.strength
+                self.reward = self.strength / 3
+                self.player.money += self.reward
+        elif self.direction == 1:
+            if self.position[1] == self.game.nb_columns:
+                self.enemy.life -= self.strength
+            elif self.game.get_character_at(self.position[1] + self.direction, ):
+                self.life -= self.strength
+                self.reward = self.strength / 3
+                self.player.money += self.reward
 
     def play_turn(self):
         """
@@ -240,4 +250,4 @@ if __name__ == "__main__":
     game = Game(zozo, lolo)
     print(f"{zozo.__str__()}\n{lolo.__str__()}")
     print(game.get_character_at([3, 5]))
-
+    print()
