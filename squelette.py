@@ -1,5 +1,3 @@
-
-
 class Player:
 
     def __str__(self):
@@ -23,7 +21,6 @@ class Player:
     def is_alive(self):
         return self.life > 0
 
-
     def get_hit(self, damages):
         """
         Take the damage to life
@@ -31,7 +28,6 @@ class Player:
         """
         self.damages = damages
         return self.life - damages
-
 
     def new_character(self):
         """
@@ -46,7 +42,6 @@ class Player:
                 if self.money >= Character.base_price :
                     column = 0 if self.direction == +1 else self.game.nb_columns-1
                     Character(self,(line,column))
-
 
 class Game :
 
@@ -76,14 +71,12 @@ class Game :
         elif self.player_turn[1]
             return self.player_turn = 1
 
-
     @property
     def oponent(self):
         if self.players[0]:
             return self.player_turn = 1
         elif self.player_turn[1]
             return self.player_turn = 0
-
 
     @property
     def all_characters(self):
@@ -102,8 +95,6 @@ class Game :
 
         return actual_character
 
-
-
     def place_character(self, character, position):
         """
         place character to position if possible
@@ -111,9 +102,6 @@ class Game :
                 - position : tuple
         RETURN : bool to say if placing is done or not
         """
-
-
-
 
     def draw(self):
         """
@@ -134,7 +122,6 @@ class Game :
 
         print(f"{self.players[0].money:<3}${'  '*self.nb_columns}${self.players[1].money:>3}")
 
-
     def play_turn(self):
         """
         play one turn :
@@ -145,18 +132,11 @@ class Game :
         """
         # TODO
 
-
-
     def play(self):
         """
         play an entire game : while current player is alive, play a turn and change player turn
         """
         # TODO
-
-
-
-
-
 
 ### PERSONNAGES ###
 class Character :
@@ -185,7 +165,6 @@ class Character :
             self.player.team.append(self)
             self.player.money -= self.price
 
-
     @property
     def direction(self):
         return self.player.direction
@@ -198,18 +177,15 @@ class Character :
     def enemy(self):
         return self.game.oponent
 
-
     @property
     def design(self):
         return '>' if self.direction() == 1 else '<'
-
 
     def move(self):
         """
         the character move one step front
         """
         self.move += self.direction()
-
 
     def get_hit(self, damages):
         """
@@ -219,7 +195,6 @@ class Character :
         """
         # TODO
 
-
     def attack(self):
         """
         Make an attack :
@@ -228,22 +203,17 @@ class Character :
         """
         # TODO
 
-
     def play_turn(self):
         """
         play one turn : move and attack
         """
         # TODO
 
-
     def __str__(self):
         """
         return a string represent the current object
         """
         # TODO
-
-
-
 
 
 if __name__ == "__main__":
