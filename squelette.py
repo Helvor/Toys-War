@@ -207,7 +207,8 @@ class Character :
             self.player.team.remove(self)
             self.reward = self.price / 2
             return self.reward
-        return self.reward
+        else:
+            return self.reward
 
 
     def attack(self):
