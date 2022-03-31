@@ -188,46 +188,27 @@ class Character :
 
     @property
     def direction(self):
-
-        self.player[0] = 1
-        self.player[1] = -1
-        return self.player[0] and self.player[1]
-        """
-        if self.player[0]:
-            return self.player[0].direction = 1
-        elif self.player[1]:
-            return self.player[1].direction = -1
-        """
+        return self.player.direction
 
     @property
     def game(self):
-        return self.game
+        return self.player.game
 
     @property
     def enemy(self):
-        """
-        self.ennemy[0] = self.player[1]
-        self.ennemy[1] = self.player[0]
-        return self.ennemy[0] and self.ennemy[1]
-        """
-        if self.player[0]:
-            self.enemy[0] = self.player[1]
-        elif self.player[1]:
-            self.enemy[1] = self.player[0]
+        return self.game.oponent
 
 
     @property
     def design(self):
-        self.player[0].design = ">"
-        self.player[1].design = "<"
-        return self.player[0].design and self.player[1].design
+        return '>' if self.direction() == 1 else '<'
 
 
     def move(self):
         """
         the character move one step front
         """
-        self.move += self.direction
+        self.move += self.direction()
 
 
     def get_hit(self, damages):
