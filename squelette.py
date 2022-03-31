@@ -71,20 +71,18 @@ class Game :
 
     @property
     def current_player(self):
-        self.player_turn += 1
-        if self.player_turn %2 != 0:
-            return self.players[0]
-        elif self.player_turn %2 == 0:
-            return self.players[1]
+        if self.players[0]:
+            return self.player_turn = 0
+        elif self.player_turn[1]
+            return self.player_turn = 1
 
 
     @property
     def oponent(self):
-        self.player_turn += 1
-        if self.player_turn % 2 != 0:
-            return self.players[1]
-        elif self.player_turn % 2 == 0:
-            return self.players[0]
+        if self.players[0]:
+            return self.player_turn = 1
+        elif self.player_turn[1]
+            return self.player_turn = 0
 
 
     @property
