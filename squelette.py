@@ -118,8 +118,10 @@ class Game :
             print(f"|{line:>2}|", end="")
             for col in range(self.nb_columns):
                 # TODO
-
-                print(".", end=" ")
+                if self.get_character_at(col) == None:
+                    print(".", end=" ")
+                else:
+                    print(self.character.design)
             print(f"|{line:<2}|")
 
         print("----"+self.nb_columns*"--"+"----")
@@ -159,7 +161,7 @@ class Character :
         If OK : add the current character to the player's team and take the price
         """
         self.player = player
-        self.position = position
+
         self.life = self.base_life
         self.strength = self.base_strength
         self.price = self.base_price
@@ -248,5 +250,7 @@ if __name__ == "__main__":
     zozo = Player("zozo", 30, 74)
     lolo = Player("lolo", 25, 10)
     game = Game(zozo, lolo)
+    archer = Character(zozo, [5,3])
     print(f"{zozo.__str__()}\n{lolo.__str__()}")
     print(game.get_character_at([3, 5]))
+    print(game.draw())
