@@ -200,7 +200,15 @@ class Character :
         PARAM : damages : float
         RETURN : the reward due to hit (half of price if the character is killed, 0 if not)
         """
-        # TODO
+        self.damages = damages
+        self.life -= damages
+        self.reward = 0
+        if self.life <= 0:
+            self.player.team.remove(self)
+            self.reward = self.price / 2
+            return self.reward
+        return self.reward
+
 
     def attack(self):
         """
