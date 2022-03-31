@@ -134,7 +134,7 @@ class Game :
             - oponent player's character play turn
             - draw the board
         """
-        # TODO
+
 
     def play(self):
         """
@@ -159,8 +159,8 @@ class Character :
         Place th character at the position
         If OK : add the current character to the player's team and take the price
         """
-
         self.player = player
+        self.position = position
         self.life = self.base_life
         self.strength = self.base_strength
         self.price = self.base_price
@@ -199,15 +199,12 @@ class Character :
         PARAM : damages : float
         RETURN : the reward due to hit (half of price if the character is killed, 0 if not)
         """
-        self.damages = damages
         self.life -= damages
-        self.reward = 0
+        reward = 0
         if self.life <= 0:
             self.player.team.remove(self)
-            self.reward = self.price / 2
-            return self.reward
-        else:
-            return self.reward
+            reward = self.price / 2
+        return self.reward
 
 
     def attack(self):
@@ -216,20 +213,21 @@ class Character :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
+        reward = 0
         if self.direction == -1:
             if self.position[0] == 0:
                 self.enemy.life -= self.get_hit(self.strength)
             elif self.game.get_character_at(self.position[0] + self.direction):
                 self.life -= self.strength
-                self.reward = self.strength / 3
-                self.player.money += self.reward
+                reward = self.strength / 3
+                self.player.money += reward
         elif self.direction == 1:
             if self.position[1] == self.game.nb_columns:
                 self.enemy.life -= self.strength
             elif self.game.get_character_at(self.position[1] + self.direction, ):
                 self.life -= self.strength
-                self.reward = self.strength / 3
-                self.player.money += self.reward
+                reward = self.strength / 3
+                self.player.money += reward
 
     def play_turn(self):
         """
