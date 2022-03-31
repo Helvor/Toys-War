@@ -65,14 +65,14 @@ class Game :
 
     @property
     def current_player(self):
-        self.player[int(self.player_turn)]
+        self.player[self.player_turn]
 
     @property
     def oponent(self):
         oponent = 0
         if self.player_turn == 0:
             oponent = 1
-        self.player[int(self.oponent)]
+        self.player[self.oponent]
 
     @property
     def all_characters(self):
@@ -118,6 +118,7 @@ class Game :
             print(f"|{line:>2}|", end="")
             for col in range(self.nb_columns):
                 # TODO
+
                 print(".", end=" ")
             print(f"|{line:<2}|")
 
@@ -139,7 +140,8 @@ class Game :
         """
         play an entire game : while current player is alive, play a turn and change player turn
         """
-        # TODO
+        while self.current_player.is_alive :
+            self.play_turn()
 
 ### PERSONNAGES ###
 class Character :
@@ -250,4 +252,4 @@ if __name__ == "__main__":
     game = Game(zozo, lolo)
     print(f"{zozo.__str__()}\n{lolo.__str__()}")
     print(game.get_character_at([3, 5]))
-    print()
+    print(game.draw())
