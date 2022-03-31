@@ -26,8 +26,7 @@ class Player:
         Take the damage to life
         PARAM : - damages : float
         """
-        self.damages = damages
-        return self.life - damages
+        self.life -= self.damages
 
     def new_character(self):
         """
@@ -101,7 +100,6 @@ class Game :
         RETURN : bool to say if placing is done or not
         """
         self.character = character
-        self.position = []
         if self.nb_lines < self.position < self.nb_columns:
             if self.get_character_at() == None:
                 self.character.position = self.position
@@ -193,7 +191,8 @@ class Character :
         """
         the character move one step front
         """
-        self. += self.direction()
+        self.position += self.direction
+        self.game.place_character()
 
     def get_hit(self, damages):
         """
