@@ -134,6 +134,7 @@ class Game :
             - oponent player's character play turn
             - draw the board
         """
+        self.draw()
         Player.new_character(self.current_player)
         for character in self.current_player.team:
             character.play_turn()
