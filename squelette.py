@@ -236,7 +236,6 @@ class Character :
 
             elif self.direction == 1:
                 self.get_hit(self.strength)
-            return self.player.money += reward
 
     def play_turn(self):
         """
@@ -258,6 +257,4 @@ if __name__ == "__main__":
     zozo = Player("zozo", 30, 74)
     lolo = Player("lolo", 25, 10)
     game = Game(zozo, lolo)
-    print(f"{zozo}\n{lolo}")
-    print(game.current_player.__str__)
-    print(game.oponent)
+    game.play()
