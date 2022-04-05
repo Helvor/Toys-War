@@ -26,8 +26,7 @@ class Player:
         Take the damage to life
         PARAM : - damages : float
         """
-        self.damages = damages
-        self.life -= self.damages
+        self.life -= damages
 
     def new_character(self):
         """
