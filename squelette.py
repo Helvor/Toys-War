@@ -217,25 +217,9 @@ class Character:
         Make an attack :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
-        """
-        """
-        x, y = self.position
-        if self.game.get_character_at((x, y + self.direction)) is None:
-            if self.direction == -1:
-                if y == 0:
-                    self.enemy.get_hit(self.strength)
 
-            else:
-                if y == self.game.nb_columns:
-                    self.enemy.get_hit(self.strength)
 
-        else:
-            character = self.game.get_character_at((x,y + self.direction))
-            if self.direction == -1:
-                character.get_hit(self.strength)
-
-            else:
-                self.get_hit(self.strength)
+        ça bug sur le vie des bases
         """
         x,y = self.position
         base_oponent = self.game.nb_columns - 1 if self.direction == 1 else 0
