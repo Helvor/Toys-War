@@ -26,6 +26,7 @@ class Player:
         Take the damage to life
         PARAM : - damages : float
         """
+        self.damages = damages
         self.life -= self.damages
 
     def new_character(self):
@@ -250,7 +251,7 @@ if __name__ == "__main__":
     zozo = Player("zozo", 30, 74)
     lolo = Player("lolo", 25, 10)
     game = Game(zozo, lolo)
-    archer = Character(zozo, [5,3])
     print(f"{zozo.__str__()}\n{lolo.__str__()}")
     print(game.get_character_at([3, 5]))
-    print(game.draw())
+    zozo.get_hit(Character.base_strength)
+    print(f"{zozo.__str__()}\n{lolo.__str__()}")
