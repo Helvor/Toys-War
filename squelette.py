@@ -116,10 +116,10 @@ class Game :
             print(f"|{line:>2}|", end="")
             for col in range(self.nb_columns):
                 # TODO
-                if self.get_character_at(col) == None:
+                if self.get_character_at((line,col)) == None:
                     print(".", end=" ")
                 else:
-                    print(self.character.design)
+                    print(self.get_character_at((line,col)).design, end=" ")
             print(f"|{line:<2}|")
 
         print("----"+self.nb_columns*"--"+"----")
@@ -189,14 +189,15 @@ class Character :
 
     @property
     def design(self):
-        return '>' if self.direction() == 1 else '<'
+        return '>' if self.direction == 1 else '<'
 
     def move(self):
         """
         the character move one step front
         """
-        self.position += (0, self.direction)
-        self.game.place_character(self, self.position)
+        x,y = self.position
+        y += self.direction
+        self.game.place_character(self,(x,y))
 
     def get_hit(self, damages):
         """
