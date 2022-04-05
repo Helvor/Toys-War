@@ -205,7 +205,7 @@ class Character :
         if self.life <= 0:
             self.player.team.remove(self)
             reward = self.price / 2
-        return self.reward
+        return reward
 
 
     def attack(self):
@@ -214,21 +214,6 @@ class Character :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-        reward = 0
-        if self.direction == -1:
-            if self.position[0] == 0:
-                self.enemy.life -= self.get_hit(self.strength)
-            elif self.game.get_character_at(self.position[0] + self.direction):
-                self.life -= self.strength
-                reward = self.strength / 3
-                self.player.money += reward
-        elif self.direction == 1:
-            if self.position[1] == self.game.nb_columns:
-                self.enemy.life -= self.strength
-            elif self.game.get_character_at(self.position[1] + self.direction):
-                self.life -= self.strength
-                reward = self.strength / 3
-                self.player.money += reward
 
     def play_turn(self):
         """
