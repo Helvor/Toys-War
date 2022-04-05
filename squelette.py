@@ -34,17 +34,19 @@ class Player:
         check if enough money
         and create the new one
         """
-        line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines-1}) ? (enter if none)")
+        line = input(
+            f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter if none)")
         if line != "":
             line = int(line)
-            if 0 <= line <= self.game.nb_lines-1:
-                if self.money >= Character.base_price :
-                    column = 0 if self.direction == +1 else self.game.nb_columns-1
-                    Character(self,(line,column))
+            if 0 <= line <= self.game.nb_lines - 1:
+                if self.money >= Character.base_price:
+                    column = 0 if self.direction == +1 else self.game.nb_columns - 1
+                    Character(self, (line, column))
 
-class Game :
 
-    def __init__(self, player0, player1, nb_lines=6,nb_columns=15):
+class Game:
+
+    def __init__(self, player0, player1, nb_lines=6, nb_columns=15):
         """
         PARAM : - player0 : Player
                 - player1 : Player
@@ -55,7 +57,7 @@ class Game :
         """
         self.nb_lines = nb_lines
         self.nb_columns = nb_columns
-        self.players = [player0,player1]
+        self.players = [player0, player1]
         self.player_turn = 0
 
         self.players[0].game = self
@@ -97,7 +99,7 @@ class Game :
                 - position : tuple
         RETURN : bool to say if placing is done or not
         """
-        if (0,0) < position < (self.nb_lines, self.nb_columns):
+        if (0, 0) <= position < (self.nb_lines, self.nb_columns):
             if self.get_character_at((position[0], position[1])) == None:
                 character.position = position
                 return True
@@ -108,23 +110,23 @@ class Game :
         """
         print the board
         """
-        print(f"{self.players[0].life:<4}{'  '*self.nb_columns}{self.players[1].life:>4}")
+        print(f"{self.players[0].life:<4}{'  ' * self.nb_columns}{self.players[1].life:>4}")
 
-        print("----"+self.nb_columns*"--"+"----")
+        print("----" + self.nb_columns * "--" + "----")
 
         for line in range(self.nb_lines):
             print(f"|{line:>2}|", end="")
             for col in range(self.nb_columns):
                 # TODO
-                if self.get_character_at((line,col)) == None:
+                if self.get_character_at((line, col)) == None:
                     print(".", end=" ")
                 else:
-                    print(self.get_character_at((line,col)).design, end=" ")
+                    print(self.get_character_at((line, col)).design, end=" ")
             print(f"|{line:<2}|")
 
-        print("----"+self.nb_columns*"--"+"----")
+        print("----" + self.nb_columns * "--" + "----")
 
-        print(f"{self.players[0].money:<3}${'  '*self.nb_columns}${self.players[1].money:>3}")
+        print(f"{self.players[0].money:<3}${'  ' * self.nb_columns}${self.players[1].money:>3}")
 
     def play_turn(self):
         """
@@ -135,9 +137,7 @@ class Game :
             - draw the board
         """
         Player.new_character(self.current_player)
-        for character in self.current_player.team:
-            character.play_turn()
-        for character in self.oponent.team:
+        for character in self.current_player.team + self.oponent.team:
             character.play_turn()
         self.draw()
 
@@ -149,9 +149,9 @@ class Game :
             self.play_turn()
             self.player_turn = 1 - self.player_turn
 
-### PERSONNAGES ###
-class Character :
 
+### PERSONNAGES ###
+class Character:
     base_price = 1
     base_life = 5
     base_strength = 1
@@ -171,7 +171,7 @@ class Character :
         self.price = self.base_price
 
         ok = self.game.place_character(self, position)
-        if ok :
+        if ok:
             self.player.team.append(self)
             self.player.money -= self.price
 
@@ -195,9 +195,9 @@ class Character :
         """
         the character move one step front
         """
-        x,y = self.position
+        x, y = self.position
         y += self.direction
-        self.game.place_character(self,(x,y))
+        self.game.place_character(self, (x, y))
 
     def get_hit(self, damages):
         """
@@ -212,27 +212,28 @@ class Character :
             reward = self.price / 2
         return reward
 
-
     def attack(self):
         """
         Make an attack :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-        if game.get_character_at((self.position[0], self.position[1] + self.direction)) == None:
+        x, y = self.position
+        if self.game.get_character_at((x, y + self.direction)) is None:
             if self.direction == -1:
-                if self.position[1] == 0:
+                if y == 0:
                     self.enemy.get_hit(self.strength)
 
-            elif self.direction == 1:
-                if self.position[1] == game.nb_columns:
+            else:
+                if y == self.game.nb_columns:
                     self.enemy.get_hit(self.strength)
 
-        elif not game.get_character_at((self.position[0], self.position[1] + self.direction)) == None:
+        else:
+            character = self.game.get_character_at((x,y + self.direction))
             if self.direction == -1:
-                self.get_hit(self.strength)
+                character.get_hit(self.strength)
 
-            elif self.direction == 1:
+            else:
                 self.get_hit(self.strength)
 
     def play_turn(self):
