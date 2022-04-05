@@ -219,7 +219,7 @@ class Character:
             - if in front of character : hit him (and get reward)
 
 
-        ça bug sur le vie des bases
+        ça bug parfois sur le vie des bases
         """
         x,y = self.position
         base_oponent = self.game.nb_columns - 1 if self.direction == 1 else 0
