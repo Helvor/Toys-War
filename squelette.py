@@ -218,6 +218,7 @@ class Character:
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
+        """
         x, y = self.position
         if self.game.get_character_at((x, y + self.direction)) is None:
             if self.direction == -1:
@@ -235,6 +236,19 @@ class Character:
 
             else:
                 self.get_hit(self.strength)
+        """
+        x,y = self.position
+        base_oponent = self.game.nb_columns - 1 if self.direction == 1 else 0
+
+        if y == base_oponent:
+            self.enemy.get_hit(self.strength)
+        else:
+            character = self.game.get_character_at((x, y + self.direction))
+
+            if character is None:
+                return
+
+            self.player.money += character.get_hit(self.strength)
 
     def play_turn(self):
         """
