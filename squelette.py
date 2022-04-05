@@ -97,15 +97,12 @@ class Game :
                 - position : tuple
         RETURN : bool to say if placing is done or not
         """
-        self.character = character
-        if (0,0) <= position <= (self.nb_lines, self.nb_columns):
-            if self.get_character_at(self.position[0], self.position[1] + self.direction) == None:
-                self.character.position = position
+        if (0,0) < position < (self.nb_lines, self.nb_columns):
+            if self.get_character_at((position[0], position[1])) == None:
+                character.position = position
                 return True
             else:
                 return False
-        else:
-            return "Erreur : position en dehors du plateau"
 
     def draw(self):
         """
@@ -198,8 +195,8 @@ class Character :
         """
         the character move one step front
         """
-        self.position += self.direction
-        self.game.place_character()
+        self.position += (0, self.direction)
+        self.game.place_character(self, self.position)
 
     def get_hit(self, damages):
         """
@@ -221,7 +218,7 @@ class Character :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-        if game.get_character_at(self.position[0], self.position[1] + self.direction) == None:
+        if game.get_character_at((self.position[0], self.position[1] + self.direction)) == None:
             if self.direction == -1:
                 if self.position[1] == 0:
                     self.enemy.get_hit(self.strength)
@@ -230,7 +227,7 @@ class Character :
                 if self.position[1] == game.nb_columns:
                     self.enemy.get_hit(self.strength)
 
-        elif not game.get_character_at(self.position[0], self.position[1] + self.direction) == None:
+        elif not game.get_character_at((self.position[0], self.position[1] + self.direction)) == None:
             if self.direction == -1:
                 self.get_hit(self.strength)
 
