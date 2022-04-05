@@ -65,14 +65,15 @@ class Game :
 
     @property
     def current_player(self):
-        self.player[self.player_turn]
+        return self.players[self.player_turn]
 
     @property
     def oponent(self):
-        oponent = 0
         if self.player_turn == 0:
-            oponent = 1
-        self.player[self.oponent]
+            self.player_turn = 1
+        elif self.player_turn == 1:
+            self.player_turn = 0
+        return self.players[self.player_turn]
 
     @property
     def all_characters(self):
@@ -250,7 +251,6 @@ if __name__ == "__main__":
     zozo = Player("zozo", 30, 74)
     lolo = Player("lolo", 25, 10)
     game = Game(zozo, lolo)
-    print(f"{zozo.__str__()}\n{lolo.__str__()}")
-    print(game.get_character_at([3, 5]))
-    zozo.get_hit(Character.base_strength)
-    print(f"{zozo.__str__()}\n{lolo.__str__()}")
+    print(f"{zozo}\n{lolo}")
+    print(game.current_player.__str__)
+    print(game.oponent)
