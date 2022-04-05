@@ -214,7 +214,7 @@ class Character :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-
+        if
     def play_turn(self):
         """
         play one turn : move and attack
