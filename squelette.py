@@ -220,9 +220,16 @@ class Character :
                     self.enemy.get_hit(self.strength)
 
             elif self.direction == 1:
-                if self.position[1] == 0:
+                if self.position[1] == game.nb_columns:
                     self.enemy.get_hit(self.strength)
-        elif
+
+        elif not game.get_character_at(self.position + self.direction) == None:
+            if self.direction == -1:
+                self.get_hit(self.strength)
+
+            elif self.direction == 1:
+                self.get_hit(self.strength)
+            return self.player.money += reward
 
     def play_turn(self):
         """
