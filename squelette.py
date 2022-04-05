@@ -137,13 +137,20 @@ class Game :
             - oponent player's character play turn
             - draw the board
         """
+        Player.new_character(self.current_player)
+        for character in self.current_player.team:
+            character.play_turn()
+        for character in self.oponent.team:
+            character.play_turn()
+        self.draw()
 
     def play(self):
         """
         play an entire game : while current player is alive, play a turn and change player turn
         """
-        while self.current_player.is_alive :
+        while self.current_player.is_alive and self.oponent.is_alive:
             self.play_turn()
+            self.player_turn = 1 - self.player_turn
 
 ### PERSONNAGES ###
 class Character :
