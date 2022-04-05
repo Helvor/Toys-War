@@ -98,14 +98,14 @@ class Game :
         RETURN : bool to say if placing is done or not
         """
         self.character = character
-        if self.nb_lines < self.position < self.nb_columns:
+        if (0,0) <= position <= (self.nb_lines, self.nb_columns):
             if self.get_character_at() == None:
-                self.character.position = self.position
+                self.character.position = position
                 return True
             else:
                 return False
         else:
-            return False
+            return "Erreur : position en dehors du plateau"
 
     def draw(self):
         """
@@ -162,7 +162,6 @@ class Character :
         If OK : add the current character to the player's team and take the price
         """
         self.player = player
-
         self.life = self.base_life
         self.strength = self.base_strength
         self.price = self.base_price
