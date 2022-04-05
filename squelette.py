@@ -214,7 +214,16 @@ class Character :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-        if
+        if game.get_character_at(self.position + self.direction) == None:
+            if self.direction == -1:
+                if self.position[1] == 0:
+                    self.enemy.get_hit(self.strength)
+
+            elif self.direction == 1:
+                if self.position[1] == 0:
+                    self.enemy.get_hit(self.strength)
+        elif
+
     def play_turn(self):
         """
         play one turn : move and attack
