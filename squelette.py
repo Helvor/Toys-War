@@ -99,7 +99,7 @@ class Game :
         """
         self.character = character
         if (0,0) <= position <= (self.nb_lines, self.nb_columns):
-            if self.get_character_at() == None:
+            if self.get_character_at(self.position[0], self.position[1] + self.direction) == None:
                 self.character.position = position
                 return True
             else:
@@ -221,7 +221,7 @@ class Character :
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-        if game.get_character_at(self.position + self.direction) == None:
+        if game.get_character_at(self.position[0], self.position[1] + self.direction) == None:
             if self.direction == -1:
                 if self.position[1] == 0:
                     self.enemy.get_hit(self.strength)
@@ -230,7 +230,7 @@ class Character :
                 if self.position[1] == game.nb_columns:
                     self.enemy.get_hit(self.strength)
 
-        elif not game.get_character_at(self.position + self.direction) == None:
+        elif not game.get_character_at(self.position[0], self.position[1] + self.direction) == None:
             if self.direction == -1:
                 self.get_hit(self.strength)
 
@@ -254,7 +254,7 @@ class Character :
 if __name__ == "__main__":
     print("Let's Play !!! ")
     # TODO
-    zozo = Player("zozo", 30, 74)
-    lolo = Player("lolo", 25, 10)
+    zozo = Player("zozo", 20, 10)
+    lolo = Player("lolo", 20, 10)
     game = Game(zozo, lolo)
     game.play()
