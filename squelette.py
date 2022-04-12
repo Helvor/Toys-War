@@ -247,6 +247,23 @@ class Character:
         """
         return f"perso ({self.price}$) || life : {self.life} || strength : [{self.strength}"
 
+class Skeleton(Character):
+    base_price = 2
+    base_life = 7
+    base_strength = 3
+
+    @property
+    def design(self):
+        return '@' if self.direction == 1 else '@'
+
+class Tank(Character):
+    base_price = 5
+    base_life = 10
+    base_strength = 1
+
+    @property
+    def design(self):
+        return 'O' if self.direction == 1 else 'O'
 
 if __name__ == "__main__":
     print("Let's Play !!! ")
