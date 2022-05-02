@@ -34,18 +34,14 @@ class Player:
         check if enough money
         and create the new one
         """
-        try:
-            line = input(
-                f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter if none)")
-            if line != "":
-                line = int(line)
-                if 0 <= line <= self.game.nb_lines - 1:
-                    if self.money >= Character.base_price:
-                        column = 0 if self.direction == +1 else self.game.nb_columns - 1
-                        Character(self, (line, column))
-
-        except ValueError:
-            print("Vous n'avez pas entré un nombre")
+        line = input(
+            f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter if none)")
+        if line != "":
+            line = int(line)
+            if 0 <= line <= self.game.nb_lines - 1:
+                if self.money >= Character.base_price:
+                    column = 0 if self.direction == +1 else self.game.nb_columns - 1
+                    Character(self, (line, column))
 
 
 class Game:
