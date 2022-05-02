@@ -34,14 +34,18 @@ class Player:
         check if enough money
         and create the new one
         """
-        line = input(
-            f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter if none)")
-        if line != "":
-            line = int(line)
-            if 0 <= line <= self.game.nb_lines - 1:
-                if self.money >= Character.base_price:
-                    column = 0 if self.direction == +1 else self.game.nb_columns - 1
-                    Character(self, (line, column))
+        try:
+            line = input(
+                f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter if none)")
+            if line != "":
+                line = int(line)
+                if 0 <= line <= self.game.nb_lines - 1:
+                    if self.money >= Character.base_price:
+                        column = 0 if self.direction == +1 else self.game.nb_columns - 1
+                        Character(self, (line, column))
+
+        except ValueError:
+            print("Vous n'avez pas entré un nombre")
 
 
 class Game:
@@ -110,7 +114,7 @@ class Game:
         """
         print the board
         """
-        print(f"{self.players[0].life:<4}{'  ' * self.nb_columns}{self.players[1].life:>4}")
+        print(f"{self.players[0].name} : {self.players[0].life:<4}{' ' * self.nb_columns}{self.players[1].life:>4} : {self.players[1].name}")
 
         print("----" + self.nb_columns * "--" + "----")
 
@@ -185,7 +189,7 @@ class Character:
 
     @property
     def enemy(self):
-        return self.game.oponent
+        return self.game.players[1 if self.direction == 1 else 0]
 
     @property
     def design(self):
@@ -268,7 +272,7 @@ class Tank(Character):
 if __name__ == "__main__":
     print("Let's Play !!! ")
     # TODO
-    zozo = Player("zozo", 20, 10)
-    lolo = Player("lolo", 20, 10)
-    game = Game(zozo, lolo)
+    player1 = Player(input("Nom joueur 1 : "), 20, 10)
+    player2 = Player(input("Nom joueur 2 : "), 20, 10)
+    game = Game(player1, player2)
     game.play()
