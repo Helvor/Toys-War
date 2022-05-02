@@ -34,14 +34,22 @@ class Player:
         check if enough money
         and create the new one
         """
-        line = input(
-            f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter if none)")
-        if line != "":
-            line = int(line)
-            if 0 <= line <= self.game.nb_lines - 1:
-                if self.money >= Character.base_price:
-                    column = 0 if self.direction == +1 else self.game.nb_columns - 1
-                    Character(self, (line, column))
+        buy_choice = input(f"{self.name} : Do you want to buy this turn (Y/N) ? (or enter if no) ")
+        if buy_choice == "y" or buy_choice == "Y":
+            line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ?")
+            print(f"List of character : \n"
+                  f"S - Skeleton : {Skeleton.base_price}$ - Force : {Skeleton.base_strength} - Life : {Skeleton.base_life} \n"
+                  f"T - Tank : {Tank.base_price}$ - Force : {Tank.base_strength} - Life : {Tank.base_life}")
+            char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
+            if line != "":
+                line = int(line)
+                if 0 <= line <= self.game.nb_lines - 1:
+                    if self.money >= Character.base_price:
+                        column = 0 if self.direction == +1 else self.game.nb_columns - 1
+                        if char_choice == "S" or char_choice == "s":
+                            Skeleton(self, (line,column))
+                        elif char_choice == "T" or char_choice == "t":
+                            Tank(self, (line, column))
 
 
 class Game:
@@ -254,7 +262,7 @@ class Skeleton(Character):
 
     @property
     def design(self):
-        return '@' if self.direction == 1 else '@'
+            return '@' if self.direction == 1 else '@'
 
 class Tank(Character):
     base_price = 5
