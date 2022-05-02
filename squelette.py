@@ -286,7 +286,7 @@ class Tank(Character):
 class Duck(Character):
     base_price = 8
     base_life = 10
-    base_strength = 5
+    base_strength = 20
 
     def __str__(self):
         return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
@@ -312,3 +312,9 @@ if __name__ == "__main__":
     player2 = Player(input("Nom joueur 2 : "), 20, 10)
     game = Game(player1, player2)
     game.play()
+    if player1.life <= 0:
+        print(f"Bravo {player2.name}")
+    elif player2.life <= 0:
+        print(f"Bravo {player1.name}")
+
+    exit = input("Veuillez quitter la fenetre")
