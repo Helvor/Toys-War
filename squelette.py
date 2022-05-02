@@ -39,17 +39,20 @@ class Player:
             line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ?")
             print(f"List of character : \n"
                   f"F - Fighter : {Character.__str__(Fighter)}\n"
-                  f"T - Tank : {Character.__str__(Tank)}")
+                  f"T - Tank : {Character.__str__(Tank)}\n"
+                  f"D - Duck : {Character.__str__(Duck)}")
             char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
             if line != "":
                 line = int(line)
                 if 0 <= line <= self.game.nb_lines - 1:
                     if self.money >= Character.base_price:
                         column = 0 if self.direction == +1 else self.game.nb_columns - 1
-                        if char_choice == "S" or char_choice == "s":
-                            Skeleton(self, (line,column))
+                        if char_choice == "F" or char_choice == "f":
+                            Fighter(self, (line,column))
                         elif char_choice == "T" or char_choice == "t":
                             Tank(self, (line, column))
+                        elif char_choice == "D" or char_choice == "d":
+                            Duck(self, (line,column))
 
 
 class Game:
@@ -118,7 +121,7 @@ class Game:
         """
         print the board
         """
-        print(f"{self.players[0].name} : {self.players[0].life:<4}{' ' * self.nb_columns}{self.players[1].life:>4} : {self.players[1].name}")
+        print(f"{self.players[0].name} : {self.players[0].life:<4}♥{' ' * self.nb_columns}♥{self.players[1].life:>4} : {self.players[1].name}")
 
         print("----" + self.nb_columns * "--" + "----")
 
@@ -279,6 +282,18 @@ class Tank(Character):
     @property
     def design(self):
         return 'O' if self.direction == 1 else 'O'
+
+class Duck(Character):
+    base_price = 8
+    base_life = 10
+    base_strength = 5
+
+    def __str__(self):
+        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
+
+    @property
+    def design(self):
+        return '^' if self.direction == 1 else '^'
 
 if __name__ == "__main__":
     print("""
