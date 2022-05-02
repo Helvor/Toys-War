@@ -38,8 +38,8 @@ class Player:
         if buy_choice == "y" or buy_choice == "Y":
             line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ?")
             print(f"List of character : \n"
-                  f"S - Skeleton : {Skeleton.base_price}$ - Force : {Skeleton.base_strength} - Life : {Skeleton.base_life} \n"
-                  f"T - Tank : {Tank.base_price}$ - Force : {Tank.base_strength} - Life : {Tank.base_life}")
+                  f"F - Fighter : {Character.__str__(Fighter)}\n"
+                  f"T - Tank : {Character.__str__(Tank)}")
             char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
             if line != "":
                 line = int(line)
@@ -163,6 +163,7 @@ class Character:
     base_price = 1
     base_life = 5
     base_strength = 1
+    name = "Character"
 
     def __init__(self, player, position):
         """
@@ -253,12 +254,15 @@ class Character:
         """
         return a string represent the current object
         """
-        return f"perso ({self.price}$) || life : {self.life} || strength : [{self.strength}"
+        return f"{self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
 
-class Skeleton(Character):
+class Fighter(Character):
     base_price = 2
     base_life = 7
     base_strength = 3
+
+    def __str__(self):
+        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
 
     @property
     def design(self):
@@ -269,13 +273,26 @@ class Tank(Character):
     base_life = 10
     base_strength = 1
 
+    def __str__(self):
+        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
+
     @property
     def design(self):
         return 'O' if self.direction == 1 else 'O'
 
 if __name__ == "__main__":
-    print("Let's Play !!! ")
-    # TODO
+    print("""
+.----------------. .----------------. .----------------. .----------------.     .----------------. .----------------. .----------------.     .----------------.
+| .--------------. | .--------------. | .--------------. | .--------------. |   | .--------------. | .--------------. | .--------------. |   | .--------------. |
+| |  _________   | | |     ____     | | |  ____  ____  | | |    _______   | |   | | _____  _____ | | |      __      | | |  _______     | |   | |     __       | |
+| | |  _   _  |  | | |   .'    `.   | | | |_  _||_  _| | | |   /  ___  |  | |   | ||_   _||_   _|| | |     /  \     | | | |_   __ \    | |   | |    /  |      | |
+| | |_/ | | \_|  | | |  /  .--.  \  | | |   \ \  / /   | | |  |  (__ \_|  | |   | |  | | /\ | |  | | |    / /\ \    | | |   | |__) |   | |   | |    `| |      | |
+| |     | |      | | |  | |    | |  | | |    \ \/ /    | | |   '.___`-.   | |   | |  | |/  \| |  | | |   / ____ \   | | |   |  __ /    | |   | |     | |      | |
+| |    _| |_     | | |  \  `--'  /  | | |    _|  |_    | | |  |`\____) |  | |   | |  |   /\   |  | | | _/ /    \ \_ | | |  _| |  \ \_  | |   | |    _| |_     | |
+| |   |_____|    | | |   `.____.'   | | |   |______|   | | |  |_______.'  | |   | |  |__/  \__|  | | ||____|  |____|| | | |____| |___| | |   | |   |_____|    | |
+| |              | | |              | | |              | | |              | |   | |              | | |              | | |              | |   | |              | |
+| '--------------' | '--------------' | '--------------' | '--------------' |   | '--------------' | '--------------' | '--------------' |   | '--------------' |
+'----------------' '----------------' '----------------' '----------------'     '----------------' '----------------' '----------------'     '----------------'""")
     player1 = Player(input("Nom joueur 1 : "), 20, 10)
     player2 = Player(input("Nom joueur 2 : "), 20, 10)
     game = Game(player1, player2)
