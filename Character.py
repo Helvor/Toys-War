@@ -4,7 +4,6 @@ class Character:
     base_price = 1
     base_life = 5
     base_strength = 1
-    name = "Character"
 
     def __init__(self, player, position):
         self.player = player
