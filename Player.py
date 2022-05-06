@@ -1,4 +1,5 @@
 import random
+import os
 from Character import *
 
 class Player:
@@ -45,6 +46,7 @@ class Player:
 class IA(Player):
 
     def new_character(self):
+        os.system('cls')
         print(f"----{int(self.game.nb_columns-len('IA TURN')/2) * '-'}IA TURN{int(self.game.nb_columns-len('IA TURN')/2) * '-'}----")
         line = random.randrange(0, self.game.nb_lines - 1)
         char_choice = random.choice('FTD')
