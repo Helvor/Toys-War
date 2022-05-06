@@ -26,7 +26,7 @@ class Player:
         line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
         if line != "":
             if 0 <= int(line) <= 5:
-                for char in available_characters:
+                for char in AVAILABLE_CHARACTERS:
                     print(f"{char} - {AVAILABLE_CHARACTERS[char]}")
                 char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
 
