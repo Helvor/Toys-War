@@ -24,7 +24,6 @@ class Player:
 
     def new_character(self):
         try:
-            os.system('cls')
             line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
             if 0 <= int(line) <= 5:
                 for char in available_characters:
@@ -41,8 +40,9 @@ class Player:
                             Tank(self, (line, column))
                         elif char_choice == "D" or char_choice == "d":
                             Duck(self, (line,column))
+            os.system('cls')
         except ValueError:
-            pass
+            os.system('cls')
 
 class IA(Player):
 

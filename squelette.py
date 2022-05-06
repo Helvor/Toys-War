@@ -2,7 +2,6 @@ from Character import *
 from Player import *
 from Game import *
 
-
 if __name__ == "__main__":
     action_prog = ""
     while not action_prog == "Q":
@@ -22,7 +21,13 @@ if __name__ == "__main__":
         if choice_game == 0:
             action_prog = "Q"
         elif choice_game == 1:
-            print("Choose the name of players : ")
+            print("""
+  _____  _            __     ________ _____   _____   _   _          __  __ ______ 
+ |  __ \| |        /\ \ \   / /  ____|  __ \ / ____| | \ | |   /\   |  \/  |  ____|
+ | |__) | |       /  \ \ \_/ /| |__  | |__) | (___   |  \| |  /  \  | \  / | |__   
+ |  ___/| |      / /\ \ \   / |  __| |  _  / \___ \  | . ` | / /\ \ | |\/| |  __|  
+ | |    | |____ / ____ \ | |  | |____| | \ \ ____) | | |\  |/ ____ \| |  | | |____ 
+ |_|    |______/_/    \_\|_|  |______|_|  \_\_____/  |_| \_/_/    \_\_|  |_|______|\n""")
             player1 = Player(input("Player 1 : "), 20, 10)
             player2 = Player(input("Player 2 : "), 20, 10)
             os.system('cls')
