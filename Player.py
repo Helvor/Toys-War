@@ -23,26 +23,28 @@ class Player:
         self.life -= damages
 
     def new_character(self):
-        try:
-            line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
+        line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
+        if line != "":
             if 0 <= int(line) <= 5:
                 for char in available_characters:
                     print(f"{char} - {available_characters[char]}")
                 char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
-            if line != "":
+
                 line = int(line)
-                if 0 <= line <= self.game.nb_lines - 1:
-                    if self.money >= Character.base_price:
-                        column = 0 if self.direction == +1 else self.game.nb_columns - 1
-                        if char_choice == "F" or char_choice == "f":
-                            Fighter(self, (line,column))
-                        elif char_choice == "T" or char_choice == "t":
-                            Tank(self, (line, column))
-                        elif char_choice == "D" or char_choice == "d":
-                            Duck(self, (line,column))
-            os.system('cls')
-        except ValueError:
-            os.system('cls')
+                column = 0 if self.direction == 1 else self.game.nb_columns - 1
+                character = None
+                if char_choice.upper() == "F":
+                    character = Fighter
+                elif char_choice.upper() == "T":
+                    character = Tank
+                elif char_choice.upper() == "D":
+                    character = Duck
+
+                if self.money >= character.base_price:
+                    character(self, (line, column))
+
+        os.system('cls')
+
 
 class IA(Player):
 

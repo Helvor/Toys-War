@@ -17,7 +17,12 @@ if __name__ == "__main__":
               "1 - Player vs Player\n"
               "2 - Player vs IA\n"
               "0 - Quit")
-        choice_game = int(input("Game mode choice : "))
+        choice_game = input("Game mode choice : ")
+        verif = choice_game.isnumeric()
+        while not verif:
+            choice_game = input("(entrez un nombre) Game mode choice : ")
+            verif = choice_game.isnumeric()
+        choice_game = int(choice_game)
         if choice_game == 0:
             action_prog = "Q"
         elif choice_game == 1:
@@ -42,7 +47,7 @@ if __name__ == "__main__":
     | | | |__| | |__| |    \  /\  /   _| |_| |\  |
     |_|  \____/ \____/      \/  \/   |_____|_| \_|\n"""
                       f"Great Job {player2.name} ! You won the game")
-            elif player2.life <= 0:
+            else:
                 print("""
  __     ______  _    _  __          _______ _   _
  \ \   / / __ \| |  | | \ \        / /_   _| \ | |
@@ -69,7 +74,7 @@ if __name__ == "__main__":
     | | | |__| | |__| | | |___| |__| |____) | |____
     |_|  \____/ \____/  |______\____/|_____/|______|\n"""
                       "IA won ! :(")
-            elif player1.life <= 0:
+            else:
                 print("""
  __     ______  _    _  __          _______ _   _
  \ \   / / __ \| |  | | \ \        / /_   _| \ | |
