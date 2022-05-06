@@ -57,38 +57,4 @@ class Player:
                             Duck(self, (line,column))
 
 
-class Fighter(Character):
-    base_price = 2
-    base_life = 7
-    base_strength = 3
 
-    def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
-
-    @property
-    def design(self):
-            return '@' if self.direction == 1 else '@'
-
-class Tank(Character):
-    base_price = 5
-    base_life = 10
-    base_strength = 1
-
-    def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
-
-    @property
-    def design(self):
-        return 'O' if self.direction == 1 else 'O'
-
-class Duck(Character):
-    base_price = 8
-    base_life = 10
-    base_strength = 20
-
-    def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
-
-    @property
-    def design(self):
-        return '^' if self.direction == 1 else '^'
