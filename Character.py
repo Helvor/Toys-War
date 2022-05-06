@@ -67,17 +67,11 @@ class Character:
         self.move()
         self.attack()
 
-    def __str__(self):
-        return f"{self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
-
 
 class Fighter(Character):
     base_price = 2
     base_life = 7
     base_strength = 3
-
-    def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
 
     @property
     def design(self):
@@ -95,9 +89,6 @@ class Tank(Character):
         super().__init__(player, position)
 
         self.turn_to_move = False
-
-    def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
 
     def move(self):
         if self.turn_to_move == True:
