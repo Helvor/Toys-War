@@ -27,7 +27,7 @@ class Player:
         if line != "":
             if 0 <= int(line) <= 5:
                 for char in available_characters:
-                    print(f"{char} - {available_characters[char]}")
+                    print(f"{char} - {AVAILABLE_CHARACTERS[char]}")
                 char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
 
                 line = int(line)

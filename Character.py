@@ -1,4 +1,4 @@
-available_characters = {}
+AVAILABLE_CHARACTERS = {}
 
 class Character:
     base_price = 1
@@ -77,7 +77,7 @@ class Fighter(Character):
     def design(self):
         return '+' if self.direction == 1 else '+'
 
-    available_characters["F"] = "Fighter - 2$ - ❤ 7 - Strenght : 3"
+    AVAILABLE_CHARACTERS["F"] = "Fighter - 2$ - ❤ 7 - Strenght : 3"
 
 
 class Tank(Character):
@@ -102,7 +102,7 @@ class Tank(Character):
     def design(self):
         return '@' if self.direction == 1 else '@'
 
-    available_characters["T"] = "Tank - 5$ - ❤ 10 - Strenght : 2"
+    AVAILABLE_CHARACTERS["T"] = "Tank - 5$ - ❤ 10 - Strenght : 2"
 
 
 class Duck(Character):
@@ -117,4 +117,4 @@ class Duck(Character):
     def design(self):
         return '^' if self.direction == 1 else '^'
 
-    available_characters["D"] = "Duck - 8$ - ❤ 3 - Strenght : 10"
+    AVAILABLE_CHARACTERS["D"] = "Duck - 8$ - ❤ 3 - Strenght : 10"
