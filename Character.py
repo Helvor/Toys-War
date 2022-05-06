@@ -102,19 +102,32 @@ class Fighter(Character):
 
     @property
     def design(self):
-            return '@' if self.direction == 1 else '@'
+            return '+' if self.direction == 1 else '+'
 
 class Tank(Character):
     base_price = 5
     base_life = 10
     base_strength = 1
 
+    def __init__(self, player, position):
+        super().__init__(player,position)
+
+        self.turn_to_move = False
+
     def __str__(self):
         return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
 
+    def move(self):
+        if self.turn_to_move == True:
+            super().move()
+        if self.turn_to_move:
+            self.turn_to_move = False
+        elif not self.turn_to_move:
+            self.turn_to_move = True
+
     @property
     def design(self):
-        return 'O' if self.direction == 1 else 'O'
+        return '@' if self.direction == 1 else '@'
 
 class Duck(Character):
     base_price = 8

@@ -55,6 +55,3 @@ class Player:
                             Tank(self, (line, column))
                         elif char_choice == "D" or char_choice == "d":
                             Duck(self, (line,column))
-
-
-
