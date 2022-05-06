@@ -61,7 +61,7 @@ class IA(Player):
         IA make random choice in range of line
         Make random choice between all the character available
         """
-        line = int(random.randrange(0, self.game.nb_lines - 1))
+        line = random.randrange(0, self.game.nb_lines - 1)
         char_choice = random.choice('FTD')
         if self.money >= Character.base_price:
             column = 0 if self.direction == +1 else self.game.nb_columns - 1

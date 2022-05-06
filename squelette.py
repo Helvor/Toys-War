@@ -4,8 +4,8 @@ from Game import *
 
 
 if __name__ == "__main__":
-    exit = ""
-    while not exit == "Q" or not exit == "q":
+    action_progr = ""
+    while not action_prog == "Q":
         print("""
      _____                   __    __           
     /__   \___  _   _ ___   / / /\ \ \__ _ _ __ 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
             elif player2.life <= 0:
                 print(f"Great Job {player1.name} ! You won the game")
 
-            exit = input("Enter for returning to the menu : ")
+            action_prog = input("Enter for returning to the menu : ")
 
         elif choice_game == 2:
             player1 = IA("IA", 20, 10)
@@ -43,4 +43,4 @@ if __name__ == "__main__":
             elif player2.life <= 0:
                 print(f"Great Job {player1.name} ! You won the game")
 
-            exit = input("Enter for returning to the menu : ")
+            action_prog = input("Enter for returning to the menu : ")
