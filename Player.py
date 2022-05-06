@@ -39,10 +39,8 @@ class Player:
         buy_choice = input(f"{self.name} : Do you want to buy this turn (Y/N) ? (or enter if no) ")
         if buy_choice == "y" or buy_choice == "Y":
             line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ?")
-            print(f"List of character : \n"
-                  f"F - Fighter : {Character.__str__(Fighter)}\n"
-                  f"T - Tank : {Character.__str__(Tank)}\n"
-                  f"D - Duck : {Character.__str__(Duck)}")
+            for char in available_characters:
+                print(f"{char} - {available_characters[char]}")
             char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
             if line != "":
                 line = int(line)

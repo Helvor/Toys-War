@@ -1,3 +1,6 @@
+available_characters = {}
+
+
 class Character:
     base_price = 1
     base_life = 5
@@ -66,7 +69,7 @@ class Character:
             - if in front of ennemy's base : hit the base
             - if in front of character : hit him (and get reward)
         """
-        x,y = self.position
+        x, y = self.position
         base_oponent = self.game.nb_columns - 1 if self.direction == 1 else 0
 
         if y == base_oponent:
@@ -92,6 +95,7 @@ class Character:
         """
         return f"{self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
 
+
 class Fighter(Character):
     base_price = 2
     base_life = 7
@@ -102,15 +106,18 @@ class Fighter(Character):
 
     @property
     def design(self):
-            return '+' if self.direction == 1 else '+'
+        return '+' if self.direction == 1 else '+'
+
+    available_characters["F"] = "Fighter - 2$ - ❤ 7 - Strenght : 3"
+
 
 class Tank(Character):
     base_price = 5
     base_life = 10
-    base_strength = 1
+    base_strength = 2
 
     def __init__(self, player, position):
-        super().__init__(player,position)
+        super().__init__(player, position)
 
         self.turn_to_move = False
 
@@ -129,10 +136,13 @@ class Tank(Character):
     def design(self):
         return '@' if self.direction == 1 else '@'
 
+    available_characters["T"] = "Tank - 5$ - ❤ 10 - Strenght : 2"
+
+
 class Duck(Character):
     base_price = 8
-    base_life = 10
-    base_strength = 20
+    base_life = 3
+    base_strength = 10
 
     def __str__(self):
         return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
@@ -140,3 +150,5 @@ class Duck(Character):
     @property
     def design(self):
         return '^' if self.direction == 1 else '^'
+
+    available_characters["D"] = "Duck - 8$ - ❤ 3 - Strenght : 10"
