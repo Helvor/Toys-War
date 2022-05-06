@@ -89,9 +89,10 @@ class Game:
             - oponent player's character play turn
             - draw the board
         """
-        Player.new_character(self.current_player)
+        self.current_player.new_character()
         for character in self.current_player.team + self.oponent.team:
             character.play_turn()
+        self.current_player.money += 1
         self.draw()
 
     def play(self):
