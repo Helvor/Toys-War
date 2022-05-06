@@ -1,5 +1,5 @@
 import random
-import Character
+from Character import *
 
 class Player:
 
