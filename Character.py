@@ -1,6 +1,5 @@
 available_characters = {}
 
-
 class Character:
     base_price = 1
     base_life = 5
