@@ -5,7 +5,7 @@ from Game import *
 
 if __name__ == "__main__":
     exit = ""
-    while not exit == "M" or not exit == "m":
+    while not exit == "Q" or not exit == "q":
         print("""
      _____                   __    __           
     /__   \___  _   _ ___   / / /\ \ \__ _ _ __ 
@@ -16,9 +16,12 @@ if __name__ == "__main__":
         print("Welcome in -TOYS WAR- || a game coded in python\n"
               "Available game mode :\n"
               "1 - Player vs Player\n"
-              "2 - Player vs IA")
+              "2 - Player vs IA\n"
+              "0 - Quit")
         choice_game = int(input("Game mode choice : "))
-        if choice_game == 1:
+        if choice_game == 0:
+            exit = "Q"
+        elif choice_game == 1:
             player1 = Player(input("Player 1 : "), 20, 10)
             player2 = Player(input("Player 2 : "), 20, 10)
             game = Game(player1, player2)
@@ -28,7 +31,8 @@ if __name__ == "__main__":
             elif player2.life <= 0:
                 print(f"Great Job {player1.name} ! You won the game")
 
-            exit = input("Enter (M) for returning to the menu : ")
+            exit = input("Enter for returning to the menu : ")
+
         elif choice_game == 2:
             player1 = IA("IA", 20, 10)
             player2 = Player(input("Player 1 : "), 20, 10)
@@ -39,4 +43,4 @@ if __name__ == "__main__":
             elif player2.life <= 0:
                 print(f"Great Job {player1.name} ! You won the game")
 
-            exit = input("Enter (M) for returning to the menu : ")
+            exit = input("Enter for returning to the menu : ")

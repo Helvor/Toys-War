@@ -32,8 +32,8 @@ class Player:
         check if enough money
         and create the new one
         """
-        line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn)")
         try:
+            line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn)")
             if 0 <= int(line) <= 5:
                 for char in available_characters:
                     print(f"{char} - {available_characters[char]}")
@@ -41,7 +41,7 @@ class Player:
                 if line != "":
                     line = int(line)
                     if 0 <= line <= self.game.nb_lines - 1:
-                        if self.money <= Character.base_price:
+                        if self.money >= Character.base_price:
                             column = 0 if self.direction == +1 else self.game.nb_columns - 1
                             if char_choice == "F" or char_choice == "f":
                                 Fighter(self, (line,column))
