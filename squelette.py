@@ -22,8 +22,10 @@ if __name__ == "__main__":
         if choice_game == 0:
             action_prog = "Q"
         elif choice_game == 1:
+            print("Choose the name of players : ")
             player1 = Player(input("Player 1 : "), 20, 10)
             player2 = Player(input("Player 2 : "), 20, 10)
+            os.system('cls')
             game = Game(player1, player2)
             game.play()
             if player1.life <= 0:
@@ -46,6 +48,7 @@ if __name__ == "__main__":
                       f"Great Job {player1.name} ! You won the game")
 
             action_prog = input("Enter for returning to the menu : ")
+            os.system('cls')
 
         elif choice_game == 2:
             player1 = IA("IA", 20, 10)
@@ -72,3 +75,4 @@ if __name__ == "__main__":
                       f"Great Job {player1.name} ! You won the game")
 
             action_prog = input("Enter for returning to the menu : ")
+            os.system('cls')
