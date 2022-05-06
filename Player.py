@@ -1,6 +1,5 @@
 import random
-
-from Character import *
+import Character
 
 class Player:
 
@@ -8,12 +7,6 @@ class Player:
         return f"Nom : {self.name} | Nombre de vie : {self.life} | Argent : {self.money} | Team : {self.team}"
 
     def __init__(self, name, life, money):
-        """
-        PARAM : - name : str
-                - life : float
-                - money : float
-        initialisate team to empty list, game and direction to None
-        """
         self.name = name
         self.life = life
         self.money = money
@@ -29,11 +22,6 @@ class Player:
         self.life -= damages
 
     def new_character(self):
-        """
-        Ask to player where add a new Character,
-        check if enough money
-        and create the new one
-        """
         try:
             line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
             if 0 <= int(line) <= 5:
@@ -57,6 +45,7 @@ class Player:
 class IA(Player):
 
     def new_character(self):
+        print(f"----{int(self.game.nb_columns-len('IA TURN')/2) * '-'}IA TURN{int(self.game.nb_columns-len('IA TURN')/2) * '-'}----")
         line = random.randrange(0, self.game.nb_lines - 1)
         char_choice = random.choice('FTD')
         if self.money >= Character.base_price:

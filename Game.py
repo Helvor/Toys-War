@@ -3,12 +3,7 @@ from squelette import Player
 class Game:
 
     def __init__(self, player0, player1, nb_lines=6, nb_columns=15):
-        """
-        PARAM : - player0 : Player
-                - player1 : Player
-                - nb_lines : float
-                - nb_columns : float
-        """
+
         self.nb_lines = nb_lines
         self.nb_columns = nb_columns
         self.players = [player0, player1]
@@ -36,10 +31,7 @@ class Game:
         return self.players[0].team + self.players[1].team
 
     def get_character_at(self, position):
-        """
-        PARAM : - position : tuple
-        RETURN : character at the position, None if there is nobody
-        """
+
         actual_character = None
         for character in self.all_characters:
             if character.position == position:
@@ -47,12 +39,7 @@ class Game:
         return actual_character
 
     def place_character(self, character, position):
-        """
-        place character to position if possible
-        PARAM : - character : Character
-                - position : tuple
-        RETURN : bool to say if placing is done or not
-        """
+
         if (0, 0) <= position < (self.nb_lines, self.nb_columns):
             if self.get_character_at((position[0], position[1])) == None:
                 character.position = position
@@ -61,9 +48,6 @@ class Game:
                 return False
 
     def draw(self):
-        """
-        print the board
-        """
         print(f"{self.players[0].name} : {self.players[0].life:<4}♥{' ' * self.nb_columns}♥{self.players[1].life:>4} : {self.players[1].name}")
 
         print("----" + self.nb_columns * "--" + "----")
@@ -82,13 +66,6 @@ class Game:
         print(f"{self.players[0].money:<3}${'  ' * self.nb_columns}${self.players[1].money:>3}")
 
     def play_turn(self):
-        """
-        play one turn :
-            - current player can add a new character
-            - current player's character play turn
-            - oponent player's character play turn
-            - draw the board
-        """
         self.current_player.new_character()
         for character in self.current_player.team + self.oponent.team:
             character.play_turn()
