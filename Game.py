@@ -8,8 +8,6 @@ class Game:
                 - player1 : Player
                 - nb_lines : float
                 - nb_columns : float
-        - update player's direction and game
-        - initialisate player_turn to 0
         """
         self.nb_lines = nb_lines
         self.nb_columns = nb_columns

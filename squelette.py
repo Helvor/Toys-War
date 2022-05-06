@@ -28,4 +28,15 @@ if __name__ == "__main__":
             elif player2.life <= 0:
                 print(f"Great Job {player1.name} ! You won the game")
 
-            exit = input("Enter (M) for returning to menu : ")
+            exit = input("Enter (M) for returning to the menu : ")
+        elif choice_game == 2:
+            player1 = IA("IA", 20, 10)
+            player2 = Player(input("Player 1 : "), 20, 10)
+            game = Game(player1, player2)
+            game.play()
+            if player1.life <= 0:
+                print(f"L'IA à gagné ! :(")
+            elif player2.life <= 0:
+                print(f"Great Job {player1.name} ! You won the game")
+
+            exit = input("Enter (M) for returning to the menu : ")

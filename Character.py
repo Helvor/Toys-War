@@ -92,7 +92,7 @@ class Character:
         """
         return a string represent the current object
         """
-        return f"{self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
+        return f"{self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
 
 
 class Fighter(Character):
@@ -101,7 +101,7 @@ class Fighter(Character):
     base_strength = 3
 
     def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
+        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
 
     @property
     def design(self):
@@ -121,7 +121,7 @@ class Tank(Character):
         self.turn_to_move = False
 
     def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
+        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
 
     def move(self):
         if self.turn_to_move == True:
@@ -144,7 +144,7 @@ class Duck(Character):
     base_strength = 10
 
     def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Force : {self.base_strength} - Life : {self.base_life}"
+        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
 
     @property
     def design(self):

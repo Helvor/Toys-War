@@ -24,10 +24,6 @@ class Player:
         return self.life > 0
 
     def get_hit(self, damages):
-        """
-        Take the damage to life
-        PARAM : - damages : float
-        """
         self.life -= damages
 
     def new_character(self):
@@ -36,20 +32,43 @@ class Player:
         check if enough money
         and create the new one
         """
-        buy_choice = input(f"{self.name} : Do you want to buy this turn (Y/N) ? (or enter if no) ")
-        if buy_choice == "y" or buy_choice == "Y":
-            line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ?")
-            for char in available_characters:
-                print(f"{char} - {available_characters[char]}")
-            char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
-            if line != "":
-                line = int(line)
-                if 0 <= line <= self.game.nb_lines - 1:
-                    if self.money >= Character.base_price:
-                        column = 0 if self.direction == +1 else self.game.nb_columns - 1
-                        if char_choice == "F" or char_choice == "f":
-                            Fighter(self, (line,column))
-                        elif char_choice == "T" or char_choice == "t":
-                            Tank(self, (line, column))
-                        elif char_choice == "D" or char_choice == "d":
-                            Duck(self, (line,column))
+        line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn)")
+        try:
+            if 0 <= int(line) <= 5:
+                for char in available_characters:
+                    print(f"{char} - {available_characters[char]}")
+                char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
+                if line != "":
+                    line = int(line)
+                    if 0 <= line <= self.game.nb_lines - 1:
+                        if self.money <= Character.base_price:
+                            column = 0 if self.direction == +1 else self.game.nb_columns - 1
+                            if char_choice == "F" or char_choice == "f":
+                                Fighter(self, (line,column))
+                            elif char_choice == "T" or char_choice == "t":
+                                Tank(self, (line, column))
+                            elif char_choice == "D" or char_choice == "d":
+                                Duck(self, (line,column))
+        except ValueError:
+            pass
+
+class IA(Player):
+
+    def new_character(self):
+        """
+        IA make random choice in range of line
+        Make random choice between all the character available
+        """
+        line = int(range(0, self.game.nb_lines - 1))
+        char_choice = random.choice('FTD')
+        if line != "":
+            line = int(line)
+            if 0 <= line <= self.game.nb_lines - 1:
+                if self.money >= Character.base_price:
+                    column = 0 if self.direction == +1 else self.game.nb_columns - 1
+                    if char_choice == "F" or char_choice == "f":
+                        Fighter(self, (line, column))
+                    elif char_choice == "T" or char_choice == "t":
+                        Tank(self, (line, column))
+                    elif char_choice == "D" or char_choice == "d":
+                        Duck(self, (line, column))
