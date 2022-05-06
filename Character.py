@@ -93,10 +93,7 @@ class Tank(Character):
     def move(self):
         if self.turn_to_move == True:
             super().move()
-        if self.turn_to_move:
-            self.turn_to_move = False
-        elif not self.turn_to_move:
-            self.turn_to_move = True
+        self.turn_to_move = not self.turn_to_move
 
     @property
     def design(self):
