@@ -95,9 +95,6 @@ class Game:
         self.draw()
 
     def play(self):
-        """
-        play an entire game : while current player is alive, play a turn and change player turn
-        """
         while self.current_player.is_alive and self.oponent.is_alive:
             self.play_turn()
             self.player_turn = 1 - self.player_turn
