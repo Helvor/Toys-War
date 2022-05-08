@@ -66,11 +66,11 @@ class Game:
         print(f"{self.players[0].money:<3}${'  ' * self.nb_columns}${self.players[1].money:>3}")
 
     def play_turn(self):
+        self.draw()
         self.current_player.new_character()
         for character in self.current_player.team + self.oponent.team:
             character.play_turn()
         self.current_player.money += 1
-        self.draw()
 
     def play(self):
         while self.current_player.is_alive and self.oponent.is_alive:
