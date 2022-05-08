@@ -63,6 +63,7 @@ if __name__ == "__main__":
         elif choice_game == 2:
             player1 = IA("IA", 20, 10)
             player2 = Player(input("Player 1 : "), 20, 10)
+            os.system('cls')
             game = Game(player1, player2)
             game.play()
             if player2.life <= 0:
