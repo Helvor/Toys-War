@@ -28,20 +28,20 @@ class Player:
             if 0 <= int(line) <= 5:
                 for char in AVAILABLE_CHARACTERS:
                     print(f"{char} - {AVAILABLE_CHARACTERS[char]}")
-                char_choice = input(f"{self.name} : Wich Character do you want to buy ? ")
+                char_choice = input(f"{self.name} : Wich Character do you want to buy ? (enter to pass the turn) ")
+                if char_choice != "":
+                    line = int(line)
+                    column = 0 if self.direction == 1 else self.game.nb_columns - 1
+                    character = None
+                    if char_choice.upper() == "F":
+                        character = Fighter
+                    elif char_choice.upper() == "T":
+                        character = Tank
+                    elif char_choice.upper() == "D":
+                        character = Duck
 
-                line = int(line)
-                column = 0 if self.direction == 1 else self.game.nb_columns - 1
-                character = None
-                if char_choice.upper() == "F":
-                    character = Fighter
-                elif char_choice.upper() == "T":
-                    character = Tank
-                elif char_choice.upper() == "D":
-                    character = Duck
-
-                if self.money >= character.base_price:
-                    character(self, (line, column))
+                    if self.money >= character.base_price:
+                        character(self, (line, column))
 
         os.system('cls')
 
