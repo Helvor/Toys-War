@@ -2,12 +2,10 @@
 class Game:
 
     def __init__(self, player0, player1, nb_lines=6, nb_columns=15):
-
         self.nb_lines = nb_lines
         self.nb_columns = nb_columns
         self.players = [player0, player1]
         self.player_turn = 0
-
         self.players[0].game = self
         self.players[1].game = self
         self.players[0].direction = 1
@@ -30,7 +28,6 @@ class Game:
         return self.players[0].team + self.players[1].team
 
     def get_character_at(self, position):
-
         actual_character = None
         for character in self.all_characters:
             if character.position == position:
@@ -38,7 +35,6 @@ class Game:
         return actual_character
 
     def place_character(self, character, position):
-
         if (0, 0) <= position < (self.nb_lines, self.nb_columns):
             if self.get_character_at((position[0], position[1])) == None:
                 character.position = position
@@ -48,7 +44,6 @@ class Game:
 
     def draw(self):
         print(f"{self.players[0].name} : {self.players[0].life:<4}♥{' ' * self.nb_columns}♥{self.players[1].life:>4} : {self.players[1].name}")
-
         print("----" + self.nb_columns * "--" + "----")
 
         for line in range(self.nb_lines):

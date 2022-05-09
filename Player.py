@@ -42,7 +42,6 @@ class Player:
 
                     if self.money >= character.base_price:
                         character(self, (line, column))
-
         os.system('cls')
 
 

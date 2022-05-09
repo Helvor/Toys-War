@@ -33,13 +33,11 @@ class Character:
         return '>' if self.direction == 1 else '<'
 
     def move(self):
-
         x, y = self.position
         y += self.direction
         self.game.place_character(self, (x, y))
 
     def get_hit(self, damages):
-
         self.life -= damages
         reward = 0
         if self.life <= 0:
@@ -48,25 +46,19 @@ class Character:
         return reward
 
     def attack(self):
-
         x, y = self.position
         base_oponent = self.game.nb_columns - 1 if self.direction == 1 else 0
-
         if y == base_oponent:
             self.enemy.get_hit(self.strength)
         else:
             character = self.game.get_character_at((x, y + self.direction))
-
             if character is None:
                 return
-
             self.player.money += character.get_hit(self.strength)
 
     def play_turn(self):
-
         self.move()
         self.attack()
-
 
 class Fighter(Character):
     base_price = 2
@@ -79,7 +71,6 @@ class Fighter(Character):
 
     AVAILABLE_CHARACTERS["F"] = "Fighter - 2$ - ❤ 7 - Strenght : 3"
 
-
 class Tank(Character):
     base_price = 5
     base_life = 10
@@ -87,7 +78,6 @@ class Tank(Character):
 
     def __init__(self, player, position):
         super().__init__(player, position)
-
         self.turn_to_move = False
 
     def move(self):
@@ -100,7 +90,6 @@ class Tank(Character):
         return '@' if self.direction == 1 else '@'
 
     AVAILABLE_CHARACTERS["T"] = "Tank - 5$ - ❤ 10 - Strenght : 2"
-
 
 class Duck(Character):
     base_price = 8
