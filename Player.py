@@ -39,7 +39,6 @@ class Player:
                         character = Tank
                     elif char_choice.upper() == "D":
                         character = Duck
-
                     if self.money >= character.base_price:
                         character(self, (line, column))
         os.system('cls')
