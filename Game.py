@@ -1,4 +1,3 @@
-from squelette import Player
 
 class Game:
 
