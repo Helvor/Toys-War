@@ -29,9 +29,6 @@ class Player:
                 print("------------ List of characters : ------------")
                 for char in AVAILABLE_CHARACTERS:
                     print(f"{char} - {AVAILABLE_CHARACTERS[char]}")
-                print("------------ List of potions : ------------")
-                for potion in AVAILABLE_POTIONS:
-                    print(f"{potion} - {AVAILABLE_POTIONS[potion]}")
                 player_choice = input(f"{self.name} : Wich Character do you want to buy ? (enter to pass the turn) ")
                 if player_choice != "":
                     line = int(line)
@@ -43,13 +40,8 @@ class Player:
                         character = Tank
                     elif player_choice.upper() == "D":
                         character = Duck
-                    elif player_choice.upper() == "H":
-                        if self.money >= potion.base_price:
-                            Potion(self)
-                    if player_choice != None:
-                        if self.money >= character.base_price:
-                            Character(self, (line, column))
-
+                    if self.money >= character.base_price:
+                        character(self, (line, column))
         os.system('cls')
 
 
