@@ -1,4 +1,3 @@
-
 class Game:
 
     def __init__(self, player0, player1, nb_lines=6, nb_columns=15):
