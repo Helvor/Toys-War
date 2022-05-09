@@ -22,8 +22,6 @@ if __name__ == "__main__":
         while not verif:
             choice_game = input("(entrez un nombre) Game mode choice : ")
             verif = choice_game.isnumeric()
-            while not choice_game == range(0,2):
-                choice_game = input("(entrez un nombre entre 0, 1 et 2) Game mode choice : ")
         choice_game = int(choice_game)
         if choice_game == 0:
             action_prog = "Q"

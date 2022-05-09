@@ -51,11 +51,13 @@ class IA(Player):
         print(f"----{int(self.game.nb_columns-len('IA TURN')/2) * '-'}IA TURN{int(self.game.nb_columns-len('IA TURN')/2) * '-'}----")
         line = random.randrange(0, self.game.nb_lines - 1)
         char_choice = random.choice('FTD')
-        if self.money >= Character.base_price:
-            column = 0 if self.direction == +1 else self.game.nb_columns - 1
-            if char_choice == "F":
-                Fighter(self, (line, column))
-            elif char_choice == "T":
-                Tank(self, (line, column))
-            elif char_choice == "D":
-                Duck(self, (line, column))
+        column = 0 if self.direction == 1 else self.game.nb_columns - 1
+        character = None
+        if char_choice.upper() == "F":
+            character = Fighter
+        elif char_choice.upper() == "T":
+            character = Tank
+        elif char_choice.upper() == "D":
+            character = Duck
+        if self.money >= character.base_price:
+            character(self, (line, column))
