@@ -52,7 +52,7 @@ class Character:
             self.enemy.get_hit(self.strength)
         else:
             character = self.game.get_character_at((x, y + self.direction))
-            if character is None:
+            if character is None or character in self.player.team:
                 return
             self.player.money += character.get_hit(self.strength)
 
