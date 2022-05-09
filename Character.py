@@ -1,4 +1,5 @@
 AVAILABLE_CHARACTERS = {}
+AVAILABLE_POTIONS = {}
 
 class Character:
     base_price = 1
@@ -96,11 +97,29 @@ class Duck(Character):
     base_life = 3
     base_strength = 10
 
-    def __str__(self):
-        return f"{self.name[:1]} - {self.name} : {self.base_price}$ - Strenght : {self.base_strength} - Life : {self.base_life}"
-
     @property
     def design(self):
         return '^' if self.direction == 1 else '^'
 
     AVAILABLE_CHARACTERS["D"] = "Duck - 8$ - ❤ 3 - Strenght : 10"
+
+class Potion:
+    base_price = 0
+    base_damage = 0
+    base_heal = 0
+
+    def __init__(self, player):
+        self.player = player
+        self.price = self.base_price
+        self.damage = self.base_damage
+        self.heal = self.base_heal
+
+class Heal(Potion):
+    base_price = 5
+    base_heal = 5
+
+    def heal(self):
+        if self.player.money <= self.base_price:
+            self.player.life += self.base_heal
+
+    AVAILABLE_POTIONS["H"] = "Heal : 5 life points - 5$"
