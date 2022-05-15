@@ -42,7 +42,7 @@ class Game:
                 return False
 
     def draw(self):
-        print(f"{self.players[0].name} : {self.players[0].life:<4}♥{' ' * self.nb_columns}♥{self.players[1].life:>4} : {self.players[1].name}")
+        print(f"{self.players[0].name} : {self.players[0].life:<4}\u2665{' ' * self.nb_columns}\u2665{self.players[1].life:>4} : {self.players[1].name}")
         print("----" + self.nb_columns * "--" + "----")
 
         for line in range(self.nb_lines):
