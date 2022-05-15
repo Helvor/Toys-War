@@ -64,17 +64,18 @@ class Fighter(Character):
     base_price = 2
     base_life = 7
     base_strength = 3
+    AVAILABLE_CHARACTERS["F"] = "Fighter - 2$ - \u2665 7 - Strenght : 3"
 
     @property
     def design(self):
         return '+' if self.direction == 1 else '+'
 
-    AVAILABLE_CHARACTERS["F"] = "Fighter - 2$ - \u2665 7 - Strenght : 3"
 
 class Tank(Character):
     base_price = 5
     base_life = 10
     base_strength = 2
+    AVAILABLE_CHARACTERS["T"] = "Tank - 5$ - \u2665 10 - Strenght : 2"
 
     def __init__(self, player, position):
         super().__init__(player, position)
@@ -89,15 +90,13 @@ class Tank(Character):
     def design(self):
         return '@' if self.direction == 1 else '@'
 
-    AVAILABLE_CHARACTERS["T"] = "Tank - 5$ - \u2665 10 - Strenght : 2"
 
 class Duck(Character):
     base_price = 8
     base_life = 3
     base_strength = 10
+    AVAILABLE_CHARACTERS["D"] = "Duck - 8$ - \u2665 3 - Strenght : 10"
 
     @property
     def design(self):
         return '^' if self.direction == 1 else '^'
-
-    AVAILABLE_CHARACTERS["D"] = "Duck - 8$ - \u2665 3 - Strenght : 10"
