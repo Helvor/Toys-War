@@ -25,6 +25,9 @@ class Player:
     def new_character(self):
         line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
         if line != "":
+            while not int(line) in range(0,(self.game.nb_lines-1)):
+                line = input(
+                    f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter the right number) ")
             if 0 <= int(line) <= 5:
                 print("------------ List of characters : ------------")
                 for char in AVAILABLE_CHARACTERS:
@@ -34,6 +37,8 @@ class Player:
                     line = int(line)
                     column = 0 if self.direction == 1 else self.game.nb_columns - 1
                     character = None
+                    while not player_choice.upper() in "FTD":
+                        player_choice = input(f"{self.name} : Wich Character do you want to buy ? (enter the right letter) ")
                     if player_choice.upper() == "F":
                         character = Fighter
                     elif player_choice.upper() == "T":

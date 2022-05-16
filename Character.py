@@ -53,7 +53,7 @@ class Character:
         else:
             character = self.game.get_character_at((x, y + self.direction))
             if character is None or character in self.player.team:
-                return
+                return None
             self.player.money += character.get_hit(self.strength)
 
     def play_turn(self):
