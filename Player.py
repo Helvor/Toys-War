@@ -24,8 +24,13 @@ class Player:
 
     def new_character(self):
         line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
+        verif = line.isnumeric()
+        while not verif:
+            line = input(
+                f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter a number) ")
+            verif = line.isnumeric()
         if line != "":
-            while not int(line) in range(0,(self.game.nb_lines-1)):
+            while not int(line) in range(0,(self.game.nb_lines)):
                 line = input(
                     f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter the right number) ")
             if 0 <= int(line) <= 5:
