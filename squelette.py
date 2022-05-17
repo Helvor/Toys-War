@@ -18,10 +18,10 @@ if __name__ == "__main__":
               "2 - Player vs IA\n"
               "0 - Quit")
         choice_game = input("Game mode choice : ")
-        verif = choice_game.isnumeric()
+        verif = choice_game.isdecimal()
         while not verif:
             choice_game = input("(entrez un nombre) Game mode choice : ")
-            verif = choice_game.isnumeric()
+            verif = choice_game.isdecimal()
         choice_game = int(choice_game)
         if choice_game == 0:
             action_prog = "Q"
