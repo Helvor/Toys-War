@@ -23,16 +23,11 @@ class Player:
         self.life -= damages
 
     def new_character(self):
-        line = input(f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
-        verif = line.isdecimal()
-        while not verif and line != "":
+        line = "N"
+        while line != "" and not (line.isnumeric() and int(line) in range(0,(self.game.nb_lines))):
             line = input(
-                f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter a number) ")
-            verif = line.isdecimal()
+                f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter to pass the turn) ")
         if line != "":
-            while not int(line) in range(0,(self.game.nb_lines)):
-                line = input(
-                    f"{self.name}: Wich line would you place the new one (0-{self.game.nb_lines - 1}) ? (enter the right number) ")
             if line != "" and 0 <= int(line) <= 5:
                 print("------------ List of characters : ------------")
                 for char in AVAILABLE_CHARACTERS:
